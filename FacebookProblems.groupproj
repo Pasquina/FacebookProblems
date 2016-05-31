@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{48EE5301-0FBA-450A-95A4-5094FF5BA61E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pFileChange.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pFileChange">
+        <MSBuild Projects="pFileChange.dproj"/>
+    </Target>
+    <Target Name="pFileChange:Clean">
+        <MSBuild Projects="pFileChange.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pFileChange:Make">
+        <MSBuild Projects="pFileChange.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pFileChange"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pFileChange:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pFileChange:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
